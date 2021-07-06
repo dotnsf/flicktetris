@@ -151,6 +151,7 @@ function setSwipe(elem) {
         }
     });
 }
+setSwipe( '#t-field' );
 
 var gameOver = function () { cfield.font = "bold 16px Arial"; cfield.textAlign = "center"; cfield.fillStyle = "rgba(0,0,0, 0.85)"; cfield.beginPath(); cfield.rect(0, 0, fieldWidth, fieldHeight); cfield.closePath(); cfield.fill(); cfield.fillStyle = "#b30000"; cfield.fillText("Game over", (fieldWidth / 2), (fieldHeight / 2) - 70); cfield.font = "17px Arial"; cfield.fillStyle = "#f8f5c5"; cfield.fillText(" Score:" + score, (fieldWidth / 2), (fieldHeight / 2) + 40); }
 var gamePause = function () { cfield.font = "bold 16px Arial"; cfield.textAlign = "center"; cfield.fillStyle = "rgba(0,0,0, 0.85)"; cfield.beginPath(); cfield.rect(0, 0, fieldWidth, fieldHeight); cfield.closePath(); cfield.fill(); cfield.fillStyle = "#fa5300"; cfield.fillText("PAUSE", (fieldWidth / 2), (fieldHeight / 2)); }
