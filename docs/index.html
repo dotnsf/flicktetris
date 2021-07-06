@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<style type="text/css">
+  .gameArea {
+    width: 380px;
+    margin:10px auto;
+    position: relative;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  /* tetris */
+  #tetris {
+    text-align: center;
+  }
+
+  #field {
+    float: left;
+    width: 250px;
+  }
+
+  #message {
+    float: left;
+    margin: 10px 3px;
+  }
+
+  #score {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #score ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+  }
+
+  #score li {
+    margin-bottom: 10px;
+  }
+
+  #t-field {
+    outline: 0;
+    border: 12px solid #aaa;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #t-next {
+    outline: 0;
+    border: 5px solid #eee;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #t-points,
+  #t-lines,
+  #t-level {
+    font-weight: bold;
+    width: 100%;
+  }
+
+  #controls {
+    width: 300px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #controls ul {
+    width: 100%;
+    background-color: #fff0e0;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    line-height: 1.5em;
+  }
+
+  #controls li {
+    clear: both;
+    margin-bottom: 5px;
+    padding: 0 10px;
+  }
+
+  #controls li span {
+    float: right;
+    font-weight: bold;
+  }
+
+  #controls .chead {
+    font-weight: bold;
+    background-color: #f0c8a8;
+    padding: 2px 10px;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+    color: #207870;
+  }
+
+  .restart {
+    margin:20px;
+    width: 100%;
+    text-align: center;
+  }
+</style>
+
+<head>
+  </style>
+
+</head>
+
+<body>
+
+    <div class="gameArea">
+      <div id="tetris">
+        <div id="field">
+          <canvas id="t-field"></canvas>
+        </div>
+        <div id="message">
+          <div class="title">次のブロック</div>
+          <canvas id="t-next"></canvas>
+          <div id="score">
+            <ul>
+              <li>レベル <div id="t-level">1</div>
+              </li>
+              <li>ライン <div id="t-lines">0</div>
+              </li>
+              <li>点数 <div id="t-points">0</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /tetris -->
+      <div class="clear"></div>
+    </div><!-- /gameArea -->
+
+    <div class="restart"><a href="./tetris" class="btn btn-primary stretched-link">新しくゲームを始める</a></div>
+
+    <div id="controls">
+      <div class="title">操作</div>
+      <ul>
+        <li class="chead">キー <span>動作</span></li>
+        <li>← <span>左移動</span></li>
+        <li>→ <span>右移動</span></li>
+        <li>↑ <span>回転</span></li>
+        <li>↓ <span>ダウン</span></li>
+        <li>Space <span>下まで落下</span></li>
+        <li>P <span>ポーズ ON/OFF</span></li>
+      </ul>
+    </div><!-- /controls -->
+    </div>
+
+    <div>
+    </div>
+    <script type="text/javascript" src="/tetris.js"></script>
+</body>
+
+</html>
