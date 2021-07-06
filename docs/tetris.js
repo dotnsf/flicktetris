@@ -102,54 +102,52 @@ document.onkeydown = function (e) {
   if (keycode == 80 && !gameEnd) { if (gamePaused) { gamePaused = false; } else { gamePaused = true; gamePause(); } }
 }
 
-/*
- * スワイプイベント設定
- */
-function setSwipe(elem) {
-    let t = document.querySelector(elem);
-    let startX;        // タッチ開始 x座標
-    let startY;        // タッチ開始 y座標
-    let moveX;    // スワイプ中の x座標
-    let moveY;    // スワイプ中の y座標
-    let dist = 30;    // スワイプを感知する最低距離（ピクセル単位）
+//. <!-- スワイプイベント設定
+function setSwipe( elem ){
+  var t = document.querySelector( elem );
+  var startX;        //. タッチ開始 x座標
+  var startY;        //. タッチ開始 y座標
+  var moveX;         //. スワイプ中の x座標
+  var moveY;         //. スワイプ中の y座標
+  var dist = 30;     //. スワイプを感知する最低距離（ピクセル単位）
      
-    // タッチ開始時： xy座標を取得
-    t.addEventListener("touchstart", function(e) {
-        e.preventDefault();
-        startX = e.touches[0].pageX;
-        startY = e.touches[0].pageY;
-    });
+  //. タッチ開始時： xy座標を取得
+  t.addEventListener( "touchstart", function( e ){
+    e.preventDefault();
+    startX = e.touches[0].pageX;
+    startY = e.touches[0].pageY;
+  });
      
-    // スワイプ中： xy座標を取得
-    t.addEventListener("touchmove", function(e) {
-        e.preventDefault();
-        moveX = e.changedTouches[0].pageX;
-        moveY = e.changedTouches[0].pageY;
-    });
+  //. スワイプ中： xy座標を取得
+  t.addEventListener( "touchmove", function( e ){
+    e.preventDefault();
+    moveX = e.changedTouches[0].pageX;
+    moveY = e.changedTouches[0].pageY;
+  });
      
-    // タッチ終了時： スワイプした距離から左右どちらにスワイプしたかを判定する/距離が短い場合何もしない
-    t.addEventListener("touchend", function(e) {
-        if (startX > moveX && startX > moveX + dist) {        // 右から左にスワイプ
-            // 右から左にスワイプした時の処理
-            e.preventDefault(); 
-            lKeyPressed = true; 
-            block.chkMoveLeft(); 
-        }else if (startX < moveX && startX + dist < moveX) {    // 左から右にスワイプ
-            // 左から右にスワイプした時の処理
-            e.preventDefault(); 
-            rKeyPressed = true; 
-            block.chkMoveRight(); 
-        }else if (startY < moveY && startY + dist < moveY) {    // 上から下にスワイプ
-            // 上から下にスワイプした時の処理
-            spacePressed = true; 
-            e.preventDefault(); 
-            block.dropDown();
-        }else if (startY > moveY && startY + dist > moveY) {    // 下から上にスワイプ
-            // 下から上にスワイプした時の処理
-            e.preventDefault(); 
-            block.rotate();
-        }
-    });
+  //. タッチ終了時： スワイプした距離から左右どちらにスワイプしたかを判定する/距離が短い場合何もしない
+  t.addEventListener( "touchend", function( e ){
+    if( startX > moveX && startX > moveX + dist ){        //. 右から左にスワイプ
+      //. 右から左にスワイプした時の処理
+      e.preventDefault(); 
+      lKeyPressed = true; 
+      block.chkMoveLeft(); 
+    }else if( startX < moveX && startX + dist < moveX ){  //. 左から右にスワイプ
+      //. 左から右にスワイプした時の処理
+      e.preventDefault(); 
+      rKeyPressed = true; 
+      block.chkMoveRight(); 
+    }else if( startY < moveY && startY + dist < moveY ){  //. 上から下にスワイプ
+      //. 上から下にスワイプした時の処理
+      spacePressed = true; 
+      e.preventDefault(); 
+      block.dropDown();
+    }else if( startY > moveY && startY + dist > moveY ){  //. 下から上にスワイプ
+      //. 下から上にスワイプした時の処理
+      e.preventDefault(); 
+      block.rotate();
+    }
+  });
 }
 setSwipe( '#t-field' );
 //. スクロール禁止
@@ -157,6 +155,7 @@ var movefun = function( event ){
   event.preventDefault();
 }
 window.addEventListener( 'touchmove', movefun, { passive: false } );
+//. スワイプイベント設定 -->
 
 var gameOver = function () { cfield.font = "bold 16px Arial"; cfield.textAlign = "center"; cfield.fillStyle = "rgba(0,0,0, 0.85)"; cfield.beginPath(); cfield.rect(0, 0, fieldWidth, fieldHeight); cfield.closePath(); cfield.fill(); cfield.fillStyle = "#b30000"; cfield.fillText("Game over", (fieldWidth / 2), (fieldHeight / 2) - 70); cfield.font = "17px Arial"; cfield.fillStyle = "#f8f5c5"; cfield.fillText(" Score:" + score, (fieldWidth / 2), (fieldHeight / 2) + 40); }
 var gamePause = function () { cfield.font = "bold 16px Arial"; cfield.textAlign = "center"; cfield.fillStyle = "rgba(0,0,0, 0.85)"; cfield.beginPath(); cfield.rect(0, 0, fieldWidth, fieldHeight); cfield.closePath(); cfield.fill(); cfield.fillStyle = "#fa5300"; cfield.fillText("PAUSE", (fieldWidth / 2), (fieldHeight / 2)); }
